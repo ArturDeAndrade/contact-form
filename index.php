@@ -1,3 +1,19 @@
+<?php
+if($_POST["submit"]) {
+    $me = "arturcintra.8@gmail.com";
+    $subject = "Form to e-mail message";
+    $client = $_POST["name"];
+    $clientEmail = $_POST["email"];
+    $clientPhone = $POST["phone"];
+    $content = $_POST["msg"];
+
+    $email = "Hey there, my name is $client; $content\n\nE-mail: $clientEmail\nPhone number: $clientPhone";
+
+    mail($me, $subject, $email, "From: $client <$clientEmail>");
+
+    $submitted = "<h2>Thank you for your time, we'll answer your message as soon as possible.</h2>";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +26,9 @@
     <title>Contact Form</title>
 </head>
 <body>
-    <form class="contact" action="contact.php" method="post">
+    <?=$submitted ?>
+    
+    <form class="contact" action="index.php" method="post">
         <label for="name">Name:</label>
         <br />
         <input type="text" name="name" id="name"required>
